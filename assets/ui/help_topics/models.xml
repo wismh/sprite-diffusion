@@ -1,0 +1,20 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.models.kicker}"/>
+    <Label class="h-title" text="{tr help.models.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.models.p1}"/>
+    <Label class="h-p" text="{tr help.models.p2}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.models.p4}"/>
+    <Stack class="h-note" direction="vertical">
+        <Label class="h-note-text" text="{tr help.models.note5}"/>
+    </Stack>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.models.q7_0}"/>
+            <Label class="h-a" text="{tr help.models.a7_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.models.try}" command="{binding tryIt}"/>
+</Stack>

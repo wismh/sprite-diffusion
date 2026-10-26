@@ -1,0 +1,435 @@
+<Canvas id="app">
+  <Stack class="root" direction="vertical">
+    <Stack class="tabbar" direction="horizontal">
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-train" class="tab" command="{binding showTrain}" content="{tr ui.tab.train}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabTrain}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-models" class="tab" command="{binding showModels}" content="{tr ui.tab.models}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabModels}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-generate" class="tab" command="{binding showGenerate}" content="{tr ui.tab.generate}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabGenerate}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-filters" class="tab" command="{binding showFilters}" content="{tr ui.tab.filters}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabFilters}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-process" class="tab" command="{binding showProcess}" content="{tr ui.tab.process}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabProcess}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-datasets" class="tab" command="{binding showDatasets}" content="{tr ui.tab.datasets}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabDatasets}"/>
+      </Stack>
+      <Stack class="tab-slot" direction="vertical">
+        <Button id="tab-help" class="tab" command="{binding showHelp}" content="{tr ui.tab.help}"/>
+        <Stack class="tab-line" direction="vertical" if="{binding tabHelp}"/>
+      </Stack>
+      <Stack class="tab-spacer" direction="vertical"/>
+      <Stack class="lang-slot" direction="vertical">
+        <Button id="lang-en" class="tab" command="{binding localeEn}" content="EN"/>
+        <Stack class="tab-line" direction="vertical" if="{binding localeIsEn}"/>
+      </Stack>
+      <Stack class="lang-slot" direction="vertical">
+        <Button id="lang-uk" class="tab" command="{binding localeUk}" content="UA"/>
+        <Stack class="tab-line" direction="vertical" if="{binding localeIsUk}"/>
+      </Stack>
+    </Stack>
+
+    <!-- Train -->
+    <Stack class="screen" direction="horizontal" if="{binding tabTrain}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.train.title}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.train.model}"/>
+          <Label class="state" text="{binding modelTitleText}"/>
+          <Label class="hint" text="{binding modelDetailText}"/>
+        </Stack>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.train.status}"/>
+          <Label class="state" text="{binding stateText}"/>
+          <Label class="small" text="{binding stepText}"/>
+          <Label class="small" text="{binding lossText}"/>
+        </Stack>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.train.controls}"/>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="toggle" class="primary half" command="{binding toggle}" content="{binding toggleText}"/>
+            <Button id="stop" class="action half" command="{binding stop}" content="{tr ui.train.stop}"/>
+          </Stack>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="new-preview" class="action half" command="{binding newPreview}" content="{tr ui.train.new_samples}"/>
+            <Button id="save-checkpoint" class="action half" command="{binding saveCheckpoint}" content="{tr ui.train.save}"/>
+          </Stack>
+          <Label class="hint" text="{binding checkpointText}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical">
+        <Label class="title" text="{tr ui.train.loss}"/>
+        <Component id="loss-chart" class="chart" paint="{binding lossPaint}"/>
+        <Label class="title" text="{binding previewText}"/>
+        <Component id="preview-grid" class="preview" paint="{binding previewPaint}"/>
+      </Stack>
+    </Stack>
+
+    <!-- Models -->
+    <Stack class="screen" direction="horizontal" if="{binding tabModels}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.models.new}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.models.name}"/>
+          <TextInput id="model-name" class="field" text="{binding newModelName}"/>
+          <Label class="group-title" text="{tr ui.models.size}"/>
+          <Stack class="sizes" direction="horizontal">
+            <Stack class="size-slot" direction="vertical">
+              <Button id="size-small" class="tab" command="{binding pickSmall}" content="{tr ui.models.small}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding sizeSmall}"/>
+            </Stack>
+            <Stack class="size-slot" direction="vertical">
+              <Button id="size-medium" class="tab" command="{binding pickMedium}" content="{tr ui.models.medium}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding sizeMedium}"/>
+            </Stack>
+            <Stack class="size-slot" direction="vertical">
+              <Button id="size-large" class="tab" command="{binding pickLarge}" content="{tr ui.models.large}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding sizeLarge}"/>
+            </Stack>
+          </Stack>
+          <Label class="hint" text="{binding newModelSizeText}"/>
+          <Label class="group-title" text="{tr ui.models.dataset}"/>
+          <Label class="small" text="{binding newModelDatasetText}"/>
+          <ScrollView id="model-dataset-list" class="list short" direction="vertical">
+            <ItemsControl class="rows" items_source="{binding datasets}">
+              <ItemTemplate>
+                <Stack class="row" direction="horizontal">
+                  <Stack class="row-highlight" direction="vertical" if="{binding selected}"/>
+                  <Button class="row-button" command="{binding select}" content="{binding label}"/>
+                </Stack>
+              </ItemTemplate>
+            </ItemsControl>
+          </ScrollView>
+          <Button id="create-model" class="primary" command="{binding createModel}" content="{tr ui.models.create}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical">
+        <Label class="title" text="{tr ui.models.saved}"/>
+        <ScrollView id="model-list" class="list tall" direction="vertical">
+          <ItemsControl class="rows" items_source="{binding models}">
+            <ItemTemplate>
+              <Stack class="row" direction="horizontal">
+                <Stack class="row-highlight" direction="vertical" if="{binding selected}"/>
+                <Button class="row-button" command="{binding select}" content="{binding label}"/>
+              </Stack>
+            </ItemTemplate>
+          </ItemsControl>
+        </ScrollView>
+        <Label class="small wrap" text="{binding modelInfoText}"/>
+        <Stack class="buttons-row" direction="horizontal">
+          <Button id="open-model" class="primary half" command="{binding openModel}" content="{tr ui.models.open}"/>
+          <Button id="delete-model" class="action half" command="{binding deleteModel}" content="{tr ui.models.delete}"/>
+        </Stack>
+        <Button id="open-model-dataset" class="action" command="{binding openModelWithDataset}" content="{tr ui.models.open_with_dataset}"/>
+      </Stack>
+    </Stack>
+
+    <!-- Generate -->
+    <Stack class="screen" direction="horizontal" if="{binding tabGenerate}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.generate.title}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.inspect.model}"/>
+          <Label class="small wrap" text="{binding generateModelText}"/>
+          <Label class="group-title" text="{tr ui.generate.count}"/>
+          <TextInput id="generate-count" class="field" text="{binding generateCount}"/>
+          <Label class="group-title" text="{tr ui.generate.background}"/>
+          <Stack class="sizes" direction="horizontal">
+            <Stack class="bg-slot" direction="vertical">
+              <Button id="bg-clear" class="tab" command="{binding pickClear}" content="{tr ui.generate.transparent}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding backgroundClear}"/>
+            </Stack>
+            <Stack class="bg-slot" direction="vertical">
+              <Button id="bg-keep" class="tab" command="{binding pickKeep}" content="{tr ui.generate.keep}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding backgroundKeep}"/>
+            </Stack>
+          </Stack>
+          <Label class="group-title" text="{tr ui.generate.save_into}"/>
+          <Label class="small wrap" text="{binding generateFolderText}"/>
+          <Button id="choose-output" class="action" command="{binding chooseOutput}" content="{tr ui.generate.choose_folder}"/>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="generate" class="primary half" command="{binding generate}" content="{tr ui.generate.go}"/>
+            <Button id="cancel-generate" class="action half" command="{binding cancelGenerate}" content="{tr ui.generate.cancel}"/>
+          </Stack>
+          <Label class="small wrap" text="{binding generateText}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical">
+        <Label class="title" text="{tr ui.generate.latest}"/>
+        <Component id="generate-grid" class="dataset-grid" paint="{binding generatePaint}"/>
+        <Label class="hint" text="{tr ui.generate.hint}"/>
+      </Stack>
+    </Stack>
+
+    <!-- Filters -->
+    <Stack class="screen" direction="horizontal" if="{binding tabFilters}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.filters.title}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.inspect.model}"/>
+          <Label class="small wrap" text="{binding inspectModelText}"/>
+          <Button id="load-inspect" class="action" command="{binding loadInspect}" content="{tr ui.inspect.load}"/>
+        </Stack>
+        <Stack class="group" direction="vertical" if="{binding inspectLoaded}">
+          <Label class="group-title" text="{tr ui.filters.stage}"/>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="layer-down" class="mini" command="{binding layerDown}" content="&lt;"/>
+            <Label class="small wrap layer-text" text="{binding filterLayerText}"/>
+            <Button id="layer-up" class="mini" command="{binding layerUp}" content="&gt;"/>
+          </Stack>
+          <Stack class="sizes" direction="horizontal">
+            <Stack class="mode-slot" direction="vertical">
+              <Button id="mode-answers" class="tab" command="{binding showAnswers}" content="{tr ui.filters.answers}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding modeAnswers}"/>
+            </Stack>
+            <Stack class="mode-slot" direction="vertical">
+              <Button id="mode-weights" class="tab" command="{binding showWeights}" content="{tr ui.filters.weights}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding modeWeights}"/>
+            </Stack>
+            <Stack class="mode-slot" direction="vertical">
+              <Button id="mode-dream" class="tab" command="{binding showDream}" content="{tr ui.filters.dream}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding modeDream}"/>
+            </Stack>
+          </Stack>
+          <Label class="hint note" text="{binding filterNoteText}"/>
+          <Label class="small" text="{binding filterProgressText}"/>
+        </Stack>
+        <Stack class="group" direction="vertical" if="{binding inspectLoaded}">
+          <Label class="group-title" text="{binding filterTitleText}"/>
+          <Stack class="detail-row" direction="horizontal">
+            <Stack class="detail-col" direction="vertical">
+              <Component class="detail" paint="{binding detailAnswerPaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_answer}"/>
+            </Stack>
+            <Stack class="detail-col" direction="vertical">
+              <Component class="detail" paint="{binding detailWeightsPaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_weights}"/>
+            </Stack>
+            <Stack class="detail-col" direction="vertical">
+              <Component class="detail" paint="{binding detailDreamPaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_dream}"/>
+            </Stack>
+          </Stack>
+          <Label class="hint" text="{binding filterDetailText}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical" if="{binding inspectLoaded}">
+        <ScrollView id="filter-grid" class="filter-grid" direction="vertical">
+          <ItemsControl class="grid-rows" items_source="{binding filterRows}">
+            <ItemTemplate>
+              <Stack class="filter-row" direction="horizontal">
+                <Component class="fcell" command="{binding pick0}" paint="{binding cell0}"/>
+                <Component class="fcell" command="{binding pick1}" paint="{binding cell1}"/>
+                <Component class="fcell" command="{binding pick2}" paint="{binding cell2}"/>
+                <Component class="fcell" command="{binding pick3}" paint="{binding cell3}"/>
+                <Component class="fcell" command="{binding pick4}" paint="{binding cell4}"/>
+                <Component class="fcell" command="{binding pick5}" paint="{binding cell5}"/>
+                <Component class="fcell" command="{binding pick6}" paint="{binding cell6}"/>
+                <Component class="fcell" command="{binding pick7}" paint="{binding cell7}"/>
+              </Stack>
+            </ItemTemplate>
+          </ItemsControl>
+        </ScrollView>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.filters.looks_at}"/>
+          <Stack class="detail-row" direction="horizontal">
+            <Stack class="thumb-col" direction="vertical">
+              <Component class="thumb" paint="{binding inputSpritePaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_sprite}"/>
+            </Stack>
+            <Stack class="thumb-col" direction="vertical">
+              <Component class="thumb" paint="{binding inputNoisyPaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_noised}"/>
+            </Stack>
+            <Stack class="thumb-col" direction="vertical">
+              <Component class="thumb" paint="{binding inputEstimatePaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_guess}"/>
+            </Stack>
+            <Stack class="thumb-col" direction="vertical">
+              <Component class="thumb" paint="{binding inputNoisePaint}"/>
+              <Label class="caption" text="{tr ui.filters.cap_noise}"/>
+            </Stack>
+            <Stack class="note-column" direction="vertical">
+              <Label class="small" text="{binding noiseText}"/>
+              <Stack class="buttons-row" direction="horizontal">
+                <Button id="noise-less" class="step" command="{binding noiseLess}" content="{tr ui.filters.less}"/>
+                <Button id="noise-more" class="step" command="{binding noiseMore}" content="{tr ui.filters.more}"/>
+              </Stack>
+              <Label class="small" text="{binding pictureText}"/>
+              <Button id="new-picture" class="action" command="{binding newPicture}" content="{tr ui.filters.another}"/>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
+
+    <!-- Process -->
+    <Stack class="screen" direction="horizontal" if="{binding tabProcess}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.process.title}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.inspect.model}"/>
+          <Label class="small wrap" text="{binding inspectModelText}"/>
+          <Button id="load-inspect-process" class="action" command="{binding loadInspect}" content="{tr ui.inspect.load}"/>
+        </Stack>
+        <Stack class="group" direction="vertical" if="{binding inspectLoaded}">
+          <Label class="group-title" text="{tr ui.process.out_of_noise}"/>
+          <Stack class="sizes" direction="horizontal">
+            <Stack class="view-slot" direction="vertical">
+              <Button id="view-estimate" class="tab" command="{binding pickEstimate}" content="{tr ui.process.guess}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding viewEstimate}"/>
+            </Stack>
+            <Stack class="view-slot" direction="vertical">
+              <Button id="view-noisy" class="tab" command="{binding pickNoisy}" content="{tr ui.process.noisy}"/>
+              <Stack class="tab-line" direction="vertical" if="{binding viewNoisy}"/>
+            </Stack>
+          </Stack>
+          <Button id="new-samples-process" class="action" command="{binding newSamples}" content="{tr ui.process.new}"/>
+          <Label class="small wrap" text="{binding processText}"/>
+        </Stack>
+        <Stack class="group" direction="vertical" if="{binding inspectLoaded}">
+          <Label class="group-title" text="{tr ui.process.copy_title}"/>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="check-copies" class="primary half" command="{binding checkCopies}" content="{tr ui.process.check}"/>
+            <Button id="cancel-copies" class="action half" command="{binding cancelCopies}" content="{tr ui.process.cancel}"/>
+          </Stack>
+          <Label class="small wrap" text="{binding copyText}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical" if="{binding inspectLoaded}">
+        <Label class="title" text="{tr ui.process.grid_title}"/>
+        <Component id="process-grid" class="process-grid" paint="{binding processPaint}"/>
+        <Label class="hint" text="{tr ui.process.hint}"/>
+      </Stack>
+    </Stack>
+
+
+    <!-- Datasets -->
+    <Stack class="screen" direction="horizontal" if="{binding tabDatasets}">
+      <Stack class="column w320" direction="vertical">
+        <Label class="title" text="{tr ui.datasets.title}"/>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.datasets.import}"/>
+          <Label class="hint" text="{tr ui.datasets.import_hint}"/>
+          <Label class="small wrap" text="{binding importFolderText}"/>
+          <Button id="browse-folder" class="action" command="{binding browseFolder}" content="{tr ui.datasets.choose_folder}"/>
+          <Label class="group-title" text="{tr ui.datasets.name}"/>
+          <TextInput id="dataset-name" class="field" text="{binding datasetName}"/>
+          <Stack class="buttons-row" direction="horizontal">
+            <Button id="import" class="primary half" command="{binding importDataset}" content="{tr ui.datasets.import_go}"/>
+            <Button id="cancel-import" class="action half" command="{binding cancelImport}" content="{tr ui.datasets.cancel}"/>
+          </Stack>
+          <Label class="small wrap" text="{binding importText}"/>
+        </Stack>
+        <Stack class="group" direction="vertical">
+          <Label class="group-title" text="{tr ui.datasets.of_app}"/>
+          <ScrollView id="dataset-list" class="list short" direction="vertical">
+            <ItemsControl class="rows" items_source="{binding datasets}">
+              <ItemTemplate>
+                <Stack class="row" direction="horizontal">
+                  <Stack class="row-highlight" direction="vertical" if="{binding selected}"/>
+                  <Button class="row-button" command="{binding select}" content="{binding label}"/>
+                </Stack>
+              </ItemTemplate>
+            </ItemsControl>
+          </ScrollView>
+          <Button id="delete-dataset" class="action" command="{binding deleteDataset}" content="{tr ui.datasets.delete}"/>
+        </Stack>
+      </Stack>
+
+      <Stack class="column wide" direction="vertical">
+        <Label class="title" text="{tr ui.datasets.sprites}"/>
+        <Label class="small wrap" text="{binding datasetInfoText}"/>
+        <Component id="dataset-grid" class="dataset-grid" paint="{binding datasetPaint}"/>
+        <Stack class="buttons-row" direction="horizontal">
+          <Button id="page-prev" class="action step" command="{binding pagePrev}" content="{tr ui.datasets.prev}"/>
+          <Label class="page-text" text="{binding pageText}"/>
+          <Button id="page-next" class="action step" command="{binding pageNext}" content="{tr ui.datasets.next}"/>
+        </Stack>
+      </Stack>
+    </Stack>
+
+      <!-- Help -->
+    <Stack class="screen" direction="horizontal" if="{binding tabHelp}">
+      <Stack class="column w260" direction="vertical">
+        <Label class="title" text="{tr help.nav_title}"/>
+        <Label class="hint" text="{tr help.nav_sub}"/>
+        <ScrollView id="help-nav" class="help-nav" direction="vertical">
+          <ItemsControl class="help-nav-list" items_source="{binding helpNav}">
+            <ItemTemplate>
+              <Stack class="help-nav-row" direction="vertical">
+                <Label class="help-nav-header" if="{binding isHeader}" text="{binding title}"/>
+                <Button class="help-nav-item" if="{binding isTopic}" content="{binding title}" command="{binding select}"/>
+                <Button class="help-nav-active" if="{binding isActive}" content="{binding title}" command="{binding select}"/>
+              </Stack>
+            </ItemTemplate>
+          </ItemsControl>
+        </ScrollView>
+      </Stack>
+      <ScrollView id="help-content" class="help-content" direction="vertical" scroll-y="{binding helpScroll}">
+        <!-- HELP-TOPICS-BEGIN -->
+            <ItemsControl class="h-topic" items_source="{binding helpTopic0}" if="{binding helpShown0}">
+                <ItemTemplate src="help_topics/intro.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic1}" if="{binding helpShown1}">
+                <ItemTemplate src="help_topics/sprites.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic2}" if="{binding helpShown2}">
+                <ItemTemplate src="help_topics/diffusion.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic3}" if="{binding helpShown3}">
+                <ItemTemplate src="help_topics/unet.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic4}" if="{binding helpShown4}">
+                <ItemTemplate src="help_topics/ema.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic5}" if="{binding helpShown5}">
+                <ItemTemplate src="help_topics/sampling.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic6}" if="{binding helpShown6}">
+                <ItemTemplate src="help_topics/training.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic7}" if="{binding helpShown7}">
+                <ItemTemplate src="help_topics/models.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic8}" if="{binding helpShown8}">
+                <ItemTemplate src="help_topics/augment.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic9}" if="{binding helpShown9}">
+                <ItemTemplate src="help_topics/datasets.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic10}" if="{binding helpShown10}">
+                <ItemTemplate src="help_topics/generate.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic11}" if="{binding helpShown11}">
+                <ItemTemplate src="help_topics/filters.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic12}" if="{binding helpShown12}">
+                <ItemTemplate src="help_topics/process.xml"/>
+            </ItemsControl>
+            <ItemsControl class="h-topic" items_source="{binding helpTopic13}" if="{binding helpShown13}">
+                <ItemTemplate src="help_topics/quality.xml"/>
+            </ItemsControl>
+        <!-- HELP-TOPICS-END -->
+      </ScrollView>
+    </Stack>
+
+  <Label class="status" text="{binding statusText}"/>
+  </Stack>
+</Canvas>

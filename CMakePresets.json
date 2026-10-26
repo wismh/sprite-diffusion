@@ -1,0 +1,31 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "editor",
+      "displayName": "Game module for the Wind editor (Ninja Multi-Config)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build-editor",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "host=x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "DebugGame;Release"
+      }
+    },
+    {
+      "name": "tests",
+      "displayName": "Unit tests of the domain (Ninja Multi-Config); pass CMAKE_PREFIX_PATH of a Wind SDK",
+      "inherits": "editor",
+      "binaryDir": "${sourceDir}/build-tests",
+      "cacheVariables": {
+        "DIFFUSION_TESTS": "ON"
+      }
+    }
+  ]
+}

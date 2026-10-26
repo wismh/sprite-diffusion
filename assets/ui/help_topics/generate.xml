@@ -1,0 +1,13 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.generate.kicker}"/>
+    <Label class="h-title" text="{tr help.generate.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.generate.p1}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.generate.p3}"/>
+    <Label class="h-p" text="{tr help.generate.p4}"/>
+    <Stack class="h-note" direction="vertical">
+        <Label class="h-note-text" text="{tr help.generate.note5}"/>
+    </Stack>
+    <Button class="h-try" content="{tr help.generate.try}" command="{binding tryIt}"/>
+</Stack>

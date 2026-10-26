@@ -1,0 +1,19 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.datasets.kicker}"/>
+    <Label class="h-title" text="{tr help.datasets.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.datasets.p1}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.datasets.p3}"/>
+    <Stack class="h-note" direction="vertical">
+        <Label class="h-note-text" text="{tr help.datasets.note4}"/>
+    </Stack>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.datasets.q6_0}"/>
+            <Label class="h-a" text="{tr help.datasets.a6_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.datasets.try}" command="{binding tryIt}"/>
+</Stack>

@@ -1,0 +1,34 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.sampling.kicker}"/>
+    <Label class="h-title" text="{tr help.sampling.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.sampling.p1}"/>
+    <Label class="h-p" text="{tr help.sampling.p2}"/>
+    <Label class="h-head" text="{tr help.h.formulas}"/>
+    <Stack class="h-formula" direction="vertical">
+        <Math class="h-math" display="true" formula="\hat x_0 = \frac{x_t - \sqrt{1-\bar\alpha_t}\;\hat\varepsilon}{\sqrt{\bar\alpha_t}}"/>
+    </Stack>
+    <Label class="h-head" text="{tr help.h.legend}"/>
+    <Stack class="h-legend" direction="vertical">
+        <Stack class="h-legend-row" direction="horizontal">
+            <Stack class="h-sym" direction="vertical">
+                <Math class="h-sym-math" formula="\hat\varepsilon"/>
+            </Stack>
+            <Label class="h-legend-text" text="{tr help.sampling.legend6_0}"/>
+        </Stack>
+        <Stack class="h-legend-row" direction="horizontal">
+            <Stack class="h-sym" direction="vertical">
+                <Math class="h-sym-math" formula="\hat x_0"/>
+            </Stack>
+            <Label class="h-legend-text" text="{tr help.sampling.legend6_1}"/>
+        </Stack>
+    </Stack>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.sampling.q8_0}"/>
+            <Label class="h-a" text="{tr help.sampling.a8_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.sampling.try}" command="{binding tryIt}"/>
+</Stack>

@@ -1,0 +1,16 @@
+# Command-line tools around the model. Built together with the tests, not with the game.
+function(add_diffusion_tool name)
+    add_executable(${name} ${name}.cpp)
+    target_link_libraries(${name} PRIVATE diffusion_cuda diffusion_data diffusion_inspect)
+    if(MSVC)
+        if(WIND_SDK_CONFIG STREQUAL "Debug")
+            set_target_properties(${name} PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDebugDLL)
+        else()
+            set_target_properties(${name} PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
+        endif()
+    endif()
+endfunction()
+
+add_diffusion_tool(train_demo)
+add_diffusion_tool(bench)
+add_diffusion_tool(import_dataset)

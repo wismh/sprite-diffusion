@@ -1,0 +1,42 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.training.kicker}"/>
+    <Label class="h-title" text="{tr help.training.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.training.p1}"/>
+    <Label class="h-head" text="{tr help.h.formulas}"/>
+    <Stack class="h-formula" direction="vertical">
+        <Math class="h-math" display="true" formula="L = \mathrm{mean}\left(\varepsilon - \varepsilon_\theta(x_t, t)\right)^2"/>
+    </Stack>
+    <Label class="h-head" text="{tr help.h.legend}"/>
+    <Stack class="h-legend" direction="vertical">
+        <Stack class="h-legend-row" direction="horizontal">
+            <Stack class="h-sym" direction="vertical">
+                <Math class="h-sym-math" formula="\varepsilon"/>
+            </Stack>
+            <Label class="h-legend-text" text="{tr help.training.legend5_0}"/>
+        </Stack>
+        <Stack class="h-legend-row" direction="horizontal">
+            <Stack class="h-sym" direction="vertical">
+                <Math class="h-sym-math" formula="\varepsilon_\theta"/>
+            </Stack>
+            <Label class="h-legend-text" text="{tr help.training.legend5_1}"/>
+        </Stack>
+        <Stack class="h-legend-row" direction="horizontal">
+            <Stack class="h-sym" direction="vertical">
+                <Math class="h-sym-math" formula="L"/>
+            </Stack>
+            <Label class="h-legend-text" text="{tr help.training.legend5_2}"/>
+        </Stack>
+    </Stack>
+    <Label class="h-p" text="{tr help.training.p6}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.training.p8}"/>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.training.q10_0}"/>
+            <Label class="h-a" text="{tr help.training.a10_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.training.try}" command="{binding tryIt}"/>
+</Stack>

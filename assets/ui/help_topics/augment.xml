@@ -1,0 +1,17 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.augment.kicker}"/>
+    <Label class="h-title" text="{tr help.augment.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.augment.p1}"/>
+    <Label class="h-p" text="{tr help.augment.p2}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.augment.p4}"/>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.augment.q6_0}"/>
+            <Label class="h-a" text="{tr help.augment.a6_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.augment.try}" command="{binding tryIt}"/>
+</Stack>

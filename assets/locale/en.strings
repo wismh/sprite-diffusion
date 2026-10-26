@@ -1,0 +1,1313 @@
+locale = "en"
+
+[[string]]
+id = "ds.added"
+text = "Dataset \"{name}\" added"
+
+[[string]]
+id = "ds.cancelled"
+text = "Import cancelled"
+
+[[string]]
+id = "ds.choose"
+text = "Choose a dataset"
+
+[[string]]
+id = "ds.exists"
+text = "A dataset named \"{name}\" exists: choose another name"
+
+[[string]]
+id = "ds.failed"
+text = "Import failed: {detail}"
+
+[[string]]
+id = "ds.imported"
+text = "Imported {count} sprites"
+
+[[string]]
+id = "ds.imported_skipped"
+text = "Imported {count} sprites, {skipped} files skipped (not 16x16 pictures)"
+
+[[string]]
+id = "ds.info"
+text = "{name}: {count} sprites from {source}"
+
+[[string]]
+id = "ds.no_folder"
+text = "No folder chosen"
+
+[[string]]
+id = "ds.no_store"
+text = "There is no folder for datasets: nothing can be imported"
+
+[[string]]
+id = "ds.none_yet"
+text = "No datasets yet: import a folder of 16x16 pictures"
+
+[[string]]
+id = "ds.page"
+text = "Page {page} of {pages}"
+
+[[string]]
+id = "ds.progress"
+text = "Reading {done} of {total}"
+
+[[string]]
+id = "ds.read_failed"
+text = "Cannot read the dataset: {detail}"
+
+[[string]]
+id = "ds.reading_folder"
+text = "Reading the folder..."
+
+[[string]]
+id = "ds.removed"
+text = "Dataset \"{name}\" removed. Models that learn from it will not open"
+
+[[string]]
+id = "ds.row"
+text = "{name}  ({count} sprites)"
+
+[[string]]
+id = "ds.save_failed"
+text = "Cannot save the dataset: {detail}"
+
+[[string]]
+id = "fig.clean"
+text = "0: clean sprite"
+
+[[string]]
+id = "fig.level"
+text = "noise level"
+
+[[string]]
+id = "fig.noise"
+text = "noise"
+
+[[string]]
+id = "fig.noisy"
+text = "999: almost only noise"
+
+[[string]]
+id = "fig.signal"
+text = "sprite"
+
+[[string]]
+id = "fig.unet_block"
+text = "residual block"
+
+[[string]]
+id = "fig.unet_blocks"
+text = "two residual blocks"
+
+[[string]]
+id = "fig.unet_down"
+text = "down"
+
+[[string]]
+id = "fig.unet_in"
+text = "noisy sprite + noise level"
+
+[[string]]
+id = "fig.unet_out"
+text = "guess of the noise"
+
+[[string]]
+id = "fig.unet_skip"
+text = "skip"
+
+[[string]]
+id = "fig.unet_up"
+text = "up"
+
+[[string]]
+id = "filters.channel"
+text = "Channel {n} of {total}"
+
+[[string]]
+id = "filters.channel_detail"
+text = "Answers on average {answer}% of the strongest channel; its weights are {weights}% as strong"
+
+[[string]]
+id = "filters.dream_failed"
+text = "Dreaming failed: {detail}"
+
+[[string]]
+id = "filters.dream_progress"
+text = "Dreams: {done} of {total}"
+
+[[string]]
+id = "filters.layer"
+text = "{n} of {total}: {name}  ({channels} channels of {size}x{size})"
+
+[[string]]
+id = "filters.noise_level"
+text = "Noise level {t} of {total}"
+
+[[string]]
+id = "filters.note_answers"
+text = "How strongly each channel reacts to the sprite below, as a map (red: more, blue: less). The bar is how much it reacts in all."
+
+[[string]]
+id = "filters.note_dream"
+text = "The sprite each channel answers to hardest, found by pushing noise toward a stronger answer at this noise level."
+
+[[string]]
+id = "filters.note_weights"
+text = "What each channel looks for: its 3x3 weights for every channel before it (red: adds, blue: takes away). The bar is how strong the weights are."
+
+[[string]]
+id = "filters.picture"
+text = "Sprite {n} of the dataset"
+
+[[string]]
+id = "gen.cancelled"
+text = "Cancelled: {count} pictures were written to\n{folder}"
+
+[[string]]
+id = "gen.done"
+text = "{count} pictures written to\n{folder}"
+
+[[string]]
+id = "gen.drawing"
+text = "\"{name}\" is drawing"
+
+[[string]]
+id = "gen.failed"
+text = "Failed: {detail}"
+
+[[string]]
+id = "gen.loading"
+text = "Loading the model..."
+
+[[string]]
+id = "gen.mark_model"
+text = "Mark a model in the Models tab"
+
+[[string]]
+id = "gen.model"
+text = "\"{name}\""
+
+[[string]]
+id = "gen.no_folder"
+text = "No folder chosen"
+
+[[string]]
+id = "gen.progress"
+text = "{done} of {total}"
+
+[[string]]
+id = "gen.saved"
+text = "{count} pictures of \"{name}\" saved"
+
+[[string]]
+id = "help.augment.a6_0"
+text = "Pictures that repeat, such as the same potion in ten colors, make the network learn them even more firmly and draw them back. A dataset with fewer repeats is better than a larger one with many; remove the extra variants if you can."
+
+[[string]]
+id = "help.augment.kicker"
+text = "Training"
+
+[[string]]
+id = "help.augment.p1"
+text = "A network with millions of weights can learn the training pictures by heart, and then it draws them instead of new ones. To make that harder, every sprite is turned left to right with a chance of one half each time it is used. The network sees the mirror image as a different sprite, and the dataset is as good as twice as large."
+
+[[string]]
+id = "help.augment.p2"
+text = "Mirroring is always on. It suits most items, but a picture with a meaning in its direction, such as text, would not be right; none of those are expected among sprites."
+
+[[string]]
+id = "help.augment.p4"
+text = "It happens inside training, so there is nothing to switch. The Process tab compares pictures with the dataset both as they are and mirrored."
+
+[[string]]
+id = "help.augment.q6_0"
+text = "What if the dataset has many nearly equal pictures?"
+
+[[string]]
+id = "help.augment.title"
+text = "Mirroring and repeated pictures"
+
+[[string]]
+id = "help.augment.try"
+text = "Open the Datasets tab"
+
+[[string]]
+id = "help.datasets.a6_0"
+text = "A few thousand different ones are enough for a model to draw things in the same style. Tens of thousands work better. The more varied they are, the less the model copies."
+
+[[string]]
+id = "help.datasets.kicker"
+text = "Tabs of the program"
+
+[[string]]
+id = "help.datasets.note4"
+text = "Deleting a dataset does not delete the models that learned from it, but they cannot be opened until the dataset is back, or until you open them on another dataset in the Models tab."
+
+[[string]]
+id = "help.datasets.p1"
+text = "A dataset is the collection of sprites that a model learns from. The program makes one file of it, so the original pictures are not needed afterwards. A dataset has a name, and a model remembers which dataset it learns from."
+
+[[string]]
+id = "help.datasets.p3"
+text = "Choose folder, type a name and press Import. A progress line shows how many pictures have been read; Cancel stops it. The list shows the datasets of the program; mark one to see its sprites, page by page, and delete it with Delete."
+
+[[string]]
+id = "help.datasets.q6_0"
+text = "How many sprites do I need?"
+
+[[string]]
+id = "help.datasets.title"
+text = "Datasets"
+
+[[string]]
+id = "help.datasets.try"
+text = "Open the Datasets tab"
+
+[[string]]
+id = "help.diffusion.a12_0"
+text = "Both are possible and equal in principle. Noise is the same kind of thing at every level, so one network handles all levels with the same kind of answer, and in practice it learns more steadily."
+
+[[string]]
+id = "help.diffusion.fig3"
+text = "How much of the sprite (blue) and of the noise (red) is left in a picture at each of the 1000 noise levels."
+
+[[string]]
+id = "help.diffusion.kicker"
+text = "Basics"
+
+[[string]]
+id = "help.diffusion.legend8_0"
+text = "The clean sprite."
+
+[[string]]
+id = "help.diffusion.legend8_1"
+text = "The sprite with the noise of level t."
+
+[[string]]
+id = "help.diffusion.legend8_2"
+text = "Random noise, a number for every value of the sprite."
+
+[[string]]
+id = "help.diffusion.legend8_3"
+text = "How much of the sprite is left at level t: 1 at the start, close to 0 at the end."
+
+[[string]]
+id = "help.diffusion.p1"
+text = "Take a sprite and add a little random noise to it. Then a little more, and more, until only noise is left and the sprite cannot be seen. That is easy to do and it is the same for every picture. Diffusion teaches a network to go the other way: to look at a noisy picture and say what the noise in it is. Take that noise away, and the picture is a little clearer."
+
+[[string]]
+id = "help.diffusion.p10"
+text = "The Process tab shows it: each row is a sprite that comes out of noise, from the first step of sampling on the left to the finished sprite on the right."
+
+[[string]]
+id = "help.diffusion.p2"
+text = "To draw a new sprite, start from pure random noise and do this many times: ask the network what the noise is, take a bit of it away, and go to a lower noise level. After a few dozen steps there is a sprite. The sprite is new because the noise it started from is new."
+
+[[string]]
+id = "help.diffusion.p4"
+text = "The noise levels are numbered from 0 (a clean sprite) to 999 (almost only noise). How fast the sprite fades is set by a schedule; this program uses the cosine schedule, which fades the sprite slowly at first and avoids spending many steps on pictures that are already noise."
+
+[[string]]
+id = "help.diffusion.q12_0"
+text = "Why does the network predict the noise and not the sprite?"
+
+[[string]]
+id = "help.diffusion.title"
+text = "Diffusion: from noise to a sprite"
+
+[[string]]
+id = "help.diffusion.try"
+text = "Open the Process tab"
+
+[[string]]
+id = "help.ema.a8_0"
+text = "The average moves slowly, so it follows the training with a delay of about a thousand steps. After a restart the samples catch up with what the network has learned."
+
+[[string]]
+id = "help.ema.kicker"
+text = "The network"
+
+[[string]]
+id = "help.ema.p1"
+text = "At every step training moves the weights a little, in a slightly different direction each time. A network taken at a random moment is somewhat shaky. So the program keeps a second copy of the weights, a slow running average of the first, and draws all the sprites with it. This is the exponential moving average, EMA."
+
+[[string]]
+id = "help.ema.p4"
+text = "The decay d is 0.999: about the last thousand steps count. At the very start it is lower, so that the average does not remember the random weights the network began with."
+
+[[string]]
+id = "help.ema.p6"
+text = "You see only the averaged network: in the samples of the Train tab, in Generate, Filters and Process. Both copies are saved in the model file, so training continues exactly."
+
+[[string]]
+id = "help.ema.q8_0"
+text = "Why do the samples look worse right after I start?"
+
+[[string]]
+id = "help.ema.title"
+text = "Averaged weights"
+
+[[string]]
+id = "help.ema.try"
+text = "Open the Train tab"
+
+[[string]]
+id = "help.filters.a9_0"
+text = "Deep channels answer to patterns that are not part of any one sprite but of many at once. A picture made to excite one of them is a mix with no clear object in it. Treat it as a hint of what the channel is about, not as a portrait."
+
+[[string]]
+id = "help.filters.kicker"
+text = "Tabs of the program"
+
+[[string]]
+id = "help.filters.p1"
+text = "The network is made of channels: each layer holds many feature maps, one for every channel. Each channel is a small detector of its own, and this tab shows what each one does. It works on the weights as last saved of the model marked in the Models tab; press Load to read it."
+
+[[string]]
+id = "help.filters.p3"
+text = "The arrows choose one of eleven stages of the network. The grid has a picture for every channel of the stage, in three kinds."
+
+[[string]]
+id = "help.filters.p4"
+text = "Answers: the map of a channel for the sprite at the bottom, at the noise level chosen with Less and More. Red is a strong response, blue is the opposite. The bar at the foot of a cell shows how much the channel answers in all."
+
+[[string]]
+id = "help.filters.p5"
+text = "Weights: the 3x3 filters of a channel, one for every channel of the stage before it (the first stage reads colors, so its filters are small colored squares). They show what pattern the channel looks for."
+
+[[string]]
+id = "help.filters.p6"
+text = "Dream: the sprite a channel answers to most strongly, found in the background by starting from noise and changing it again and again so that the channel's response grows. Early stages dream of colors and strokes; deeper ones are more abstract."
+
+[[string]]
+id = "help.filters.p7"
+text = "Click a cell to see its answer, weights and dream larger on the left. Under the grid are the sprite that the network looks at, the same sprite with noise, the network's guess of the clean sprite and its guess of the noise."
+
+[[string]]
+id = "help.filters.q9_0"
+text = "Why do deep channels look like noise?"
+
+[[string]]
+id = "help.filters.title"
+text = "Filters: looking inside"
+
+[[string]]
+id = "help.filters.try"
+text = "Open the Filters tab"
+
+[[string]]
+id = "help.generate.kicker"
+text = "Tabs of the program"
+
+[[string]]
+id = "help.generate.note5"
+text = "The pictures are drawn from the weights as last saved. If the model is training, press Save now in the Train tab first to include its latest steps."
+
+[[string]]
+id = "help.generate.p1"
+text = "When the model draws well enough, this tab makes as many new pictures as you want, say a thousand, and saves each as a 16 by 16 PNG file. All of them are drawn from different random noise."
+
+[[string]]
+id = "help.generate.p3"
+text = "Mark a model in the Models tab, type the number of pictures, choose the background and, if you wish, the folder, and press Generate. The grid shows the newest pictures while the rest are made; Cancel stops and keeps what is written. Each run goes into a new folder named after the model and the time."
+
+[[string]]
+id = "help.generate.p4"
+text = "Transparent turns pixels that are close to magenta into transparency, which gives sprites with the background of the original pictures. Keep magenta leaves the picture as the network drew it."
+
+[[string]]
+id = "help.generate.title"
+text = "Generate pictures"
+
+[[string]]
+id = "help.generate.try"
+text = "Open the Generate tab"
+
+[[string]]
+id = "help.h.faq"
+text = "Questions"
+
+[[string]]
+id = "help.h.formulas"
+text = "Formulas"
+
+[[string]]
+id = "help.h.idea"
+text = "The idea"
+
+[[string]]
+id = "help.h.legend"
+text = "What the symbols mean"
+
+[[string]]
+id = "help.h.where"
+text = "In the program"
+
+[[string]]
+id = "help.intro.a7_0"
+text = "The first recognizable sprites appear after a few thousand steps, which is minutes. Good ones take tens or hundreds of thousands of steps, which is hours of training. You can stop at any time and continue later."
+
+[[string]]
+id = "help.intro.kicker"
+text = "Start here"
+
+[[string]]
+id = "help.intro.note5"
+text = "Training needs an NVIDIA video card (CUDA). Everything is saved on your computer, so a model can be closed and trained further later, exactly where it stopped."
+
+[[string]]
+id = "help.intro.p1"
+text = "The program teaches a neural network to draw small pictures, 16 by 16 pixels, in the style of the pictures it is shown, for example the icons of a game. Nobody draws the new pictures or writes rules for them: the network is shown thousands of examples and learns what such pictures look like. Then it makes new ones from random noise."
+
+[[string]]
+id = "help.intro.p2"
+text = "The method is called a diffusion model. It is the same idea that stands behind well-known image generators, only here it is small enough to train on one video card in a few hours."
+
+[[string]]
+id = "help.intro.p4"
+text = "Work goes from left to right along the tabs. Datasets: turn a folder of pictures into a dataset. Models: make a model for a dataset. Train: let it learn and watch the sprites it draws get better. Generate: save any number of new pictures as files. Filters and Process: look inside the network and at how a picture comes out of noise."
+
+[[string]]
+id = "help.intro.q7_0"
+text = "How long does it take?"
+
+[[string]]
+id = "help.intro.title"
+text = "What this program does"
+
+[[string]]
+id = "help.intro.try"
+text = "Open the Train tab"
+
+[[string]]
+id = "help.models.a7_0"
+text = "No. The shape of the network is fixed when the model is made. To try another size make a new model."
+
+[[string]]
+id = "help.models.kicker"
+text = "Training"
+
+[[string]]
+id = "help.models.note5"
+text = "Making a copy of a model file before a big change, such as a new dataset, is cheap insurance. The files are in the folder of the program data, under models."
+
+[[string]]
+id = "help.models.p1"
+text = "A model is a network with its training so far, kept in one file: the weights, their average, the memory of the optimizer, the random generator and the name of the dataset. Because everything is in the file, a model can be closed and opened later and carry on exactly where it stopped."
+
+[[string]]
+id = "help.models.p2"
+text = "There are three sizes. Small (32 channels, about one million weights) trains quickly and draws plain sprites. Medium (64 channels, about four million) is a good start. Large (96 channels, about nine million) is slower and can keep more detail, but it needs more steps and more data to show it."
+
+[[string]]
+id = "help.models.p4"
+text = "Models tab: a name, a size, and the dataset marked in the list make a new model. Saved models are listed with their size, steps and dataset. Open continues one on its own dataset. The button below it opens the model on the dataset marked on the left instead: the weights are kept and the model goes on learning from the other data."
+
+[[string]]
+id = "help.models.q7_0"
+text = "Can I change the size of a model later?"
+
+[[string]]
+id = "help.models.title"
+text = "Models and their sizes"
+
+[[string]]
+id = "help.models.try"
+text = "Open the Models tab"
+
+[[string]]
+id = "help.nav_sub"
+text = "Pick a topic. The order goes from the simplest to the details."
+
+[[string]]
+id = "help.nav_title"
+text = "Help"
+
+[[string]]
+id = "help.process.kicker"
+text = "Tabs of the program"
+
+[[string]]
+id = "help.process.note6"
+text = "A dataset with many close variants of the same picture makes the yardstick small, so copying is judged strictly. Read the three numbers of each row, the 10%, 50% and 90% of the distances, and not only the share."
+
+[[string]]
+id = "help.process.p1"
+text = "This tab shows how sprites are made and whether they are new. It works with the model marked in the Models tab; press Load first."
+
+[[string]]
+id = "help.process.p3"
+text = "Each of the four rows is one sprite. From left to right are eight of the 30 steps of sampling, from pure noise to the finished sprite. Its guess shows what the network thinks the clean sprite is at that step, Noisy input shows the picture that it was given. The last picture of a row is the sprite of the dataset that is closest to the result, and the list on the left gives the distance to it."
+
+[[string]]
+id = "help.process.p4"
+text = "The distance is the root mean square difference of the pixels, from 0 (the same picture) up. It compares pixel by pixel, so a sprite moved by one pixel or in another color is counted as far away even though it looks alike."
+
+[[string]]
+id = "help.process.p5"
+text = "Check copying draws 256 sprites and measures, for each, the distance to the closest sprite of the dataset. As a yardstick it takes how far the dataset sprites are from their own closest neighbours. If many new sprites are closer than the dataset sprites are to each other, the model probably repeats what it was shown. A model that does not copy gives about half."
+
+[[string]]
+id = "help.process.title"
+text = "Process and the copy check"
+
+[[string]]
+id = "help.process.try"
+text = "Open the Process tab"
+
+[[string]]
+id = "help.quality.a3_0"
+text = "Give it more different pictures, remove repeated ones, and do not train far beyond the point where the samples stop improving. Mirroring already helps. A smaller model remembers less, but it also draws plainer sprites."
+
+[[string]]
+id = "help.quality.a3_1"
+text = "Train longer, because the details settle slowly, and try a larger model. Use the Process tab to check that the problem is in the model and not in the data: look at where in the steps the sprite falls apart."
+
+[[string]]
+id = "help.quality.a3_2"
+text = "Usually a little. The loss changes very slowly after the first tens of thousands of steps, and extra steps first clean up the edges, then make copying stronger. Better data does more than longer training."
+
+[[string]]
+id = "help.quality.kicker"
+text = "Quality"
+
+[[string]]
+id = "help.quality.p1"
+text = "Two things go wrong with a model like this. It can copy: draw the pictures it was trained on almost as they were. Or it can make a mess: sprites whose parts do not fit together, pieces of different things in one picture. Both come from what the model saw and how long it learned."
+
+[[string]]
+id = "help.quality.q3_0"
+text = "How to get less copying?"
+
+[[string]]
+id = "help.quality.q3_1"
+text = "How to get fewer messy sprites?"
+
+[[string]]
+id = "help.quality.q3_2"
+text = "Will 50,000 more steps help?"
+
+[[string]]
+id = "help.quality.title"
+text = "Why sprites come out as a mess"
+
+[[string]]
+id = "help.quality.try"
+text = "Open the Train tab"
+
+[[string]]
+id = "help.sampling.a8_0"
+text = "Up to a point. From 30 to 50 steps a sprite changes a little; much beyond that it hardly changes. The quality is set by training, not by the number of sampling steps."
+
+[[string]]
+id = "help.sampling.kicker"
+text = "The network"
+
+[[string]]
+id = "help.sampling.legend6_0"
+text = "The noise as the network guesses it."
+
+[[string]]
+id = "help.sampling.legend6_1"
+text = "The clean sprite worked out from that guess. The Process tab shows it as the network's guess."
+
+[[string]]
+id = "help.sampling.p1"
+text = "A sprite could be made by going down all 1000 noise levels one by one, but that is slow. The DDIM method jumps: it uses only a few dozen of the levels, spread evenly from the noisiest to the cleanest. Previews use 30 steps and saved pictures 50."
+
+[[string]]
+id = "help.sampling.p2"
+text = "At each step the network's guess of the noise gives a guess of the clean sprite. The program moves toward that guess, but only part of the way, to the next noise level. DDIM adds no new randomness: the same starting noise always gives the same sprite."
+
+[[string]]
+id = "help.sampling.q8_0"
+text = "Do more steps make better sprites?"
+
+[[string]]
+id = "help.sampling.title"
+text = "Sampling: DDIM"
+
+[[string]]
+id = "help.sampling.try"
+text = "Open the Process tab"
+
+[[string]]
+id = "help.section.basics"
+text = "Basics"
+
+[[string]]
+id = "help.section.network"
+text = "The network"
+
+[[string]]
+id = "help.section.quality"
+text = "Quality"
+
+[[string]]
+id = "help.section.tools"
+text = "Tabs of the program"
+
+[[string]]
+id = "help.section.training"
+text = "Training"
+
+[[string]]
+id = "help.sprites.a6_0"
+text = "It is small enough for the network to learn quickly and large enough for an icon. Each pixel matters, so the pictures look like pixel art."
+
+[[string]]
+id = "help.sprites.kicker"
+text = "Basics"
+
+[[string]]
+id = "help.sprites.p1"
+text = "For the network a sprite is a block of numbers: 16 rows and 16 columns of pixels, and each pixel has three numbers, red, green and blue. That is 16 x 16 x 3 = 768 numbers. They are not kept from 0 to 255 but moved to the range from -1 to 1, which suits the network better."
+
+[[string]]
+id = "help.sprites.p2"
+text = "The network draws opaque pictures and has no transparency. So when pictures are imported, every transparent pixel (alpha below 128) becomes magenta, a color that sprites hardly ever use. The background of a generated sprite is then magenta, and it can be turned back into transparency when the pictures are saved."
+
+[[string]]
+id = "help.sprites.p4"
+text = "Datasets tab: choose a folder with 16 by 16 pictures (PNG, BMP, TGA or JPG; subfolders are read too), give the dataset a name and press Import. Pictures of any other size are skipped. The grid shows the sprites of the dataset page by page."
+
+[[string]]
+id = "help.sprites.q6_0"
+text = "Why 16 by 16?"
+
+[[string]]
+id = "help.sprites.title"
+text = "A sprite is numbers"
+
+[[string]]
+id = "help.sprites.try"
+text = "Open the Datasets tab"
+
+[[string]]
+id = "help.training.a10_0"
+text = "When the samples stop getting better in a way you can see, in many thousands of steps. The loss chart flattens long before that, so the samples are the better guide."
+
+[[string]]
+id = "help.training.kicker"
+text = "Training"
+
+[[string]]
+id = "help.training.legend5_0"
+text = "The noise that was added."
+
+[[string]]
+id = "help.training.legend5_1"
+text = "The network's guess; \\(\\theta\\) stands for all its weights."
+
+[[string]]
+id = "help.training.legend5_2"
+text = "The loss, the number the chart on the Train tab shows."
+
+[[string]]
+id = "help.training.p1"
+text = "One training step: take 64 sprites of the dataset, give each its own random noise level and random noise, make the noisy pictures, and ask the network what the noise in them is. Compare its answer with the real noise: the mean squared difference is the loss. The Adam optimizer then changes every weight a little to make the loss smaller."
+
+[[string]]
+id = "help.training.p6"
+text = "The loss falls fast in the first minutes and then very slowly. A low loss does not by itself mean nice sprites: a lot of the noise cannot be guessed at all, so the loss never goes near zero. Look at the samples as well as the chart."
+
+[[string]]
+id = "help.training.p8"
+text = "Train tab: Start, Pause and Stop. The tab shows the step, the loss (a chart on a logarithmic scale) and 16 sprites that the model draws now, refreshed every 250 steps or on demand with New samples. A checkpoint is saved every 500 steps and when training stops; Save now saves at once."
+
+[[string]]
+id = "help.training.q10_0"
+text = "When should I stop?"
+
+[[string]]
+id = "help.training.title"
+text = "How the network learns"
+
+[[string]]
+id = "help.training.try"
+text = "Open the Train tab"
+
+[[string]]
+id = "help.unet.a8_0"
+text = "This network is built from convolutions only, to stay small and quick. For pictures of 16 by 16 the bottom level at 4 by 4 already sees the whole sprite, but attention could help the parts of a sprite agree with each other."
+
+[[string]]
+id = "help.unet.fig2"
+text = "The levels of the U-Net. The dashed lines are skip connections: the details of the way down are handed to the way up."
+
+[[string]]
+id = "help.unet.kicker"
+text = "The network"
+
+[[string]]
+id = "help.unet.p1"
+text = "The network takes a noisy sprite and the noise level, and gives back its guess of the noise, the same size as the sprite. Its shape is a letter U. The path down looks at the sprite at 16 by 16, then at 8 by 8, then at 4 by 4: each time the picture is smaller and each pixel covers more of the sprite, so the network sees the whole at the bottom. The path up goes back to 16 by 16."
+
+[[string]]
+id = "help.unet.p3"
+text = "Each level is a residual block: normalization (GroupNorm), the SiLU function and a 3x3 convolution, twice, with the input added back at the end. The noise level goes in as a number turned into a vector of sines and cosines, passes two dense layers and is added in every block, so each block knows how noisy the picture is."
+
+[[string]]
+id = "help.unet.p4"
+text = "The skip connections matter: without them the fine details would be lost at the narrow bottom. The sizes differ: Small has 32 channels at the top level, Medium 64, Large 96 (the lower levels have two and four times as many)."
+
+[[string]]
+id = "help.unet.p6"
+text = "The Filters tab opens the network stage by stage: eleven stages from the input convolution to the last block, each with its channels shown as pictures."
+
+[[string]]
+id = "help.unet.q8_0"
+text = "Why no attention layers?"
+
+[[string]]
+id = "help.unet.title"
+text = "The network: a U-Net"
+
+[[string]]
+id = "help.unet.try"
+text = "Open the Filters tab"
+
+[[string]]
+id = "insp.cannot_load"
+text = "Cannot load \"{name}\": {detail}"
+
+[[string]]
+id = "insp.hint"
+text = "Mark a model in the Models tab and load it. The weights are read as last saved."
+
+[[string]]
+id = "insp.loaded"
+text = "\"{name}\": {steps} steps, dataset \"{dataset}\" ({count} sprites)"
+
+[[string]]
+id = "insp.loaded_status"
+text = "Model \"{name}\" loaded"
+
+[[string]]
+id = "model.cannot_make"
+text = "Cannot make \"{name}\": {detail}"
+
+[[string]]
+id = "model.choose"
+text = "Choose a model"
+
+[[string]]
+id = "model.dataset_is"
+text = "Dataset: \"{name}\""
+
+[[string]]
+id = "model.deleted"
+text = "Model \"{name}\" deleted"
+
+[[string]]
+id = "model.exists"
+text = "A model named \"{name}\" exists: choose another name"
+
+[[string]]
+id = "model.info"
+text = "{name}: {base} channels, {steps} steps, dataset \"{dataset}\", {size} MB"
+
+[[string]]
+id = "model.large"
+text = "Large: 96 channels, slow, the most detail"
+
+[[string]]
+id = "model.medium"
+text = "Medium: 64 channels, a good start"
+
+[[string]]
+id = "model.none_yet"
+text = "No models yet: make one on the left"
+
+[[string]]
+id = "model.pick_dataset"
+text = "Choose the dataset below"
+
+[[string]]
+id = "model.row"
+text = "{name}  ({base} channels, {steps} steps)"
+
+[[string]]
+id = "model.small"
+text = "Small: 32 channels, quick to train, plain sprites"
+
+[[string]]
+id = "process.cancelled"
+text = "Cancelled"
+
+[[string]]
+id = "process.checking"
+text = "Checking: {percent}%"
+
+[[string]]
+id = "process.failed"
+text = "The check failed: {detail}"
+
+[[string]]
+id = "process.measuring"
+text = "Measuring the dataset..."
+
+[[string]]
+id = "process.near_data"
+text = ", as close as data is to data"
+
+[[string]]
+id = "process.result"
+text = "{share}% of {samples} new sprites are as close to a dataset sprite as a typical dataset sprite is to its closest neighbour ({typical}); about 50% if the new ones sit among the data as the data does.\nDistance to the closest dataset sprite (10% / 50% / 90%):\nnew sprites {new_low} / {new_median} / {new_high}\ndataset sprites {data_low} / {data_median} / {data_high}"
+
+[[string]]
+id = "process.row"
+text = "{n}: closest #{index}, distance {distance}"
+
+[[string]]
+id = "process.row_turned"
+text = "{n}: closest #{index} turned, distance {distance}"
+
+[[string]]
+id = "stage.0"
+text = "Input convolution"
+
+[[string]]
+id = "stage.1"
+text = "Block 1 at 16x16"
+
+[[string]]
+id = "stage.10"
+text = "Block 4 at 16x16"
+
+[[string]]
+id = "stage.2"
+text = "Down to 8x8"
+
+[[string]]
+id = "stage.3"
+text = "Block 2 at 8x8"
+
+[[string]]
+id = "stage.4"
+text = "Down to 4x4"
+
+[[string]]
+id = "stage.5"
+text = "Middle block 1 at 4x4"
+
+[[string]]
+id = "stage.6"
+text = "Middle block 2 at 4x4"
+
+[[string]]
+id = "stage.7"
+text = "Up to 8x8"
+
+[[string]]
+id = "stage.8"
+text = "Block 3 at 8x8"
+
+[[string]]
+id = "stage.9"
+text = "Up to 16x16"
+
+[[string]]
+id = "status.ready"
+text = "Ready"
+
+[[string]]
+id = "train.cannot_open"
+text = "Cannot open \"{name}\": {detail}"
+
+[[string]]
+id = "train.chart_empty"
+text = "No data yet"
+
+[[string]]
+id = "train.checkpoint"
+text = "Checkpoint: {path}  (saved {count} times)"
+
+[[string]]
+id = "train.detail"
+text = "Dataset \"{dataset}\": {count} sprites. Network of {base} channels, {params}M parameters"
+
+[[string]]
+id = "train.failed"
+text = "Failed: {detail}"
+
+[[string]]
+id = "train.loss"
+text = "Loss {loss}"
+
+[[string]]
+id = "train.loss_none"
+text = "Loss -"
+
+[[string]]
+id = "train.none"
+text = "No model is open"
+
+[[string]]
+id = "train.none_hint"
+text = "Make a model or open a saved one in the Models tab."
+
+[[string]]
+id = "train.opened"
+text = "Model \"{name}\" is open"
+
+[[string]]
+id = "train.pause"
+text = "Pause"
+
+[[string]]
+id = "train.resume"
+text = "Resume"
+
+[[string]]
+id = "train.samples_at"
+text = "Samples at step {step}"
+
+[[string]]
+id = "train.save_failed"
+text = "Cannot save the model: {detail}"
+
+[[string]]
+id = "train.saved"
+text = "Model \"{name}\" saved"
+
+[[string]]
+id = "train.start"
+text = "Start"
+
+[[string]]
+id = "train.state.failed"
+text = "Failed"
+
+[[string]]
+id = "train.state.finished"
+text = "Finished"
+
+[[string]]
+id = "train.state.paused"
+text = "Paused"
+
+[[string]]
+id = "train.state.stopped"
+text = "Stopped"
+
+[[string]]
+id = "train.state.training"
+text = "Training"
+
+[[string]]
+id = "train.step"
+text = "Step {step}"
+
+[[string]]
+id = "ui.datasets.cancel"
+text = "Cancel"
+
+[[string]]
+id = "ui.datasets.choose_folder"
+text = "Choose folder"
+
+[[string]]
+id = "ui.datasets.delete"
+text = "Delete"
+
+[[string]]
+id = "ui.datasets.import"
+text = "Import sprites"
+
+[[string]]
+id = "ui.datasets.import_go"
+text = "Import"
+
+[[string]]
+id = "ui.datasets.import_hint"
+text = "A folder of 16x16 pictures: PNG, BMP, TGA or JPG. Transparent pixels become magenta."
+
+[[string]]
+id = "ui.datasets.name"
+text = "Name of the dataset"
+
+[[string]]
+id = "ui.datasets.next"
+text = "Next"
+
+[[string]]
+id = "ui.datasets.of_app"
+text = "Datasets of the app"
+
+[[string]]
+id = "ui.datasets.prev"
+text = "Prev"
+
+[[string]]
+id = "ui.datasets.sprites"
+text = "Sprites"
+
+[[string]]
+id = "ui.datasets.title"
+text = "Datasets"
+
+[[string]]
+id = "ui.filters.another"
+text = "Another sprite"
+
+[[string]]
+id = "ui.filters.answers"
+text = "Answers"
+
+[[string]]
+id = "ui.filters.cap_answer"
+text = "Answer"
+
+[[string]]
+id = "ui.filters.cap_dream"
+text = "Dream"
+
+[[string]]
+id = "ui.filters.cap_guess"
+text = "Sprite guess"
+
+[[string]]
+id = "ui.filters.cap_noise"
+text = "Noise guess"
+
+[[string]]
+id = "ui.filters.cap_noised"
+text = "Noised"
+
+[[string]]
+id = "ui.filters.cap_sprite"
+text = "Sprite"
+
+[[string]]
+id = "ui.filters.cap_weights"
+text = "Weights"
+
+[[string]]
+id = "ui.filters.dream"
+text = "Dream"
+
+[[string]]
+id = "ui.filters.less"
+text = "Less"
+
+[[string]]
+id = "ui.filters.looks_at"
+text = "The sprite the network looks at"
+
+[[string]]
+id = "ui.filters.more"
+text = "More"
+
+[[string]]
+id = "ui.filters.stage"
+text = "Stage of the network"
+
+[[string]]
+id = "ui.filters.title"
+text = "Filters"
+
+[[string]]
+id = "ui.filters.weights"
+text = "Weights"
+
+[[string]]
+id = "ui.generate.background"
+text = "Background"
+
+[[string]]
+id = "ui.generate.cancel"
+text = "Cancel"
+
+[[string]]
+id = "ui.generate.choose_folder"
+text = "Choose folder"
+
+[[string]]
+id = "ui.generate.count"
+text = "Number of pictures"
+
+[[string]]
+id = "ui.generate.go"
+text = "Generate"
+
+[[string]]
+id = "ui.generate.hint"
+text = "Pictures are drawn from the weights as last saved: press Save now in the Train tab first to include recent steps. Each run goes into a new folder."
+
+[[string]]
+id = "ui.generate.keep"
+text = "Keep magenta"
+
+[[string]]
+id = "ui.generate.latest"
+text = "Latest pictures"
+
+[[string]]
+id = "ui.generate.save_into"
+text = "Save into"
+
+[[string]]
+id = "ui.generate.title"
+text = "Generate"
+
+[[string]]
+id = "ui.generate.transparent"
+text = "Transparent"
+
+[[string]]
+id = "ui.inspect.load"
+text = "Load the marked model"
+
+[[string]]
+id = "ui.inspect.model"
+text = "Model"
+
+[[string]]
+id = "ui.models.create"
+text = "Create and open"
+
+[[string]]
+id = "ui.models.dataset"
+text = "Dataset"
+
+[[string]]
+id = "ui.models.delete"
+text = "Delete"
+
+[[string]]
+id = "ui.models.large"
+text = "Large"
+
+[[string]]
+id = "ui.models.medium"
+text = "Medium"
+
+[[string]]
+id = "ui.models.name"
+text = "Name"
+
+[[string]]
+id = "ui.models.new"
+text = "New model"
+
+[[string]]
+id = "ui.models.open"
+text = "Open"
+
+[[string]]
+id = "ui.models.open_with_dataset"
+text = "Open and train on the dataset marked on the left"
+
+[[string]]
+id = "ui.models.saved"
+text = "Saved models"
+
+[[string]]
+id = "ui.models.size"
+text = "Size"
+
+[[string]]
+id = "ui.models.small"
+text = "Small"
+
+[[string]]
+id = "ui.process.cancel"
+text = "Cancel"
+
+[[string]]
+id = "ui.process.check"
+text = "Check copying"
+
+[[string]]
+id = "ui.process.copy_title"
+text = "Does the model copy?"
+
+[[string]]
+id = "ui.process.grid_title"
+text = "From noise to sprite"
+
+[[string]]
+id = "ui.process.guess"
+text = "Its guess"
+
+[[string]]
+id = "ui.process.hint"
+text = "Each row is one sprite. Left to right: steps of sampling from pure noise (first) to the sprite (eighth); the ninth picture is the closest sprite of the dataset, and the distance to it is in the list on the left."
+
+[[string]]
+id = "ui.process.new"
+text = "New sprites"
+
+[[string]]
+id = "ui.process.noisy"
+text = "Noisy input"
+
+[[string]]
+id = "ui.process.out_of_noise"
+text = "Sprites out of noise"
+
+[[string]]
+id = "ui.process.title"
+text = "Process"
+
+[[string]]
+id = "ui.tab.datasets"
+text = "Datasets"
+
+[[string]]
+id = "ui.tab.filters"
+text = "Filters"
+
+[[string]]
+id = "ui.tab.generate"
+text = "Generate"
+
+[[string]]
+id = "ui.tab.help"
+text = "Help"
+
+[[string]]
+id = "ui.tab.models"
+text = "Models"
+
+[[string]]
+id = "ui.tab.process"
+text = "Process"
+
+[[string]]
+id = "ui.tab.train"
+text = "Train"
+
+[[string]]
+id = "ui.train.controls"
+text = "Controls"
+
+[[string]]
+id = "ui.train.loss"
+text = "Loss"
+
+[[string]]
+id = "ui.train.model"
+text = "Model"
+
+[[string]]
+id = "ui.train.new_samples"
+text = "New samples"
+
+[[string]]
+id = "ui.train.save"
+text = "Save now"
+
+[[string]]
+id = "ui.train.status"
+text = "Status"
+
+[[string]]
+id = "ui.train.stop"
+text = "Stop"
+
+[[string]]
+id = "ui.train.title"
+text = "Training"

@@ -1,0 +1,20 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.filters.kicker}"/>
+    <Label class="h-title" text="{tr help.filters.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.filters.p1}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.filters.p3}"/>
+    <Label class="h-p" text="{tr help.filters.p4}"/>
+    <Label class="h-p" text="{tr help.filters.p5}"/>
+    <Label class="h-p" text="{tr help.filters.p6}"/>
+    <Label class="h-p" text="{tr help.filters.p7}"/>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.filters.q9_0}"/>
+            <Label class="h-a" text="{tr help.filters.a9_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.filters.try}" command="{binding tryIt}"/>
+</Stack>

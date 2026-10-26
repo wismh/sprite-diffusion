@@ -1,0 +1,611 @@
+/* Design box 920x640 (ScaleWithScreenSize). */
+
+Canvas {
+  background: #f8fafc;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+}
+
+.tabbar {
+  width: 100%;
+  height: 44;
+  padding: 8 16 0 16;
+  gap: 8;
+  background: #ffffff;
+}
+
+.tab-slot {
+  width: 112;
+}
+
+.lang-slot {
+  width: 48;
+}
+
+.tab-spacer {
+  flex-grow: 1;
+  height: 1;
+}
+
+.sizes {
+  width: 100%;
+  gap: 4;
+}
+
+.bg-slot {
+  width: 140;
+}
+
+.mode-slot {
+  width: 90;
+}
+
+.view-slot {
+  width: 120;
+}
+
+.size-slot {
+  width: 88;
+}
+
+Button.tab {
+  width: 100%;
+  height: 33;
+  background: #00000000;
+  border-radius: 0;
+  font-size: 15;
+}
+
+Button.tab:hover {
+  background: #f1f5f9;
+}
+
+.tab-line {
+  width: 100%;
+  height: 3;
+  background: #2563eb;
+}
+
+.screen {
+  width: 100%;
+  padding: 16;
+  gap: 24;
+}
+
+.column {
+  gap: 12;
+}
+
+.w320 {
+  width: 320;
+}
+
+.wide {
+  width: 664;
+}
+
+.w260 {
+  width: 260;
+}
+
+.title {
+  height: 28;
+  font-size: 20;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.group {
+  width: 100%;
+  gap: 8;
+  padding: 10;
+  background: #ffffff;
+  border-width: 1;
+  border-color: #e2e8f0;
+  border-radius: 6;
+}
+
+.group-title {
+  font-size: 13;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.state {
+  width: 100%;
+  font-size: 16;
+  color: #0f172a;
+}
+
+.hint {
+  width: 100%;
+  font-size: 11;
+  color: #94a3b8;
+}
+
+.small {
+  width: 100%;
+  font-size: 13;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.wrap {
+  white-space: normal;
+}
+
+Button {
+  height: 32;
+  padding: 0 12;
+  font-size: 14;
+  color: #0f172a;
+  background: #e2e8f0;
+  border-radius: 6;
+  text-align: center;
+  align-items: center;
+}
+
+Button:hover {
+  background: #cbd5e1;
+}
+
+Button:disabled {
+  color: #94a3b8;
+  background: #f1f5f9;
+}
+
+Button.primary {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+Button.primary:hover {
+  background: #1d4ed8;
+}
+
+Button.primary:disabled {
+  color: #e2e8f0;
+  background: #93c5fd;
+}
+
+Button.half {
+  width: 140;
+}
+
+Button.step {
+  width: 72;
+  padding: 0;
+}
+
+Button.mini {
+  width: 40;
+  padding: 0;
+}
+
+.buttons-row {
+  gap: 8;
+  align-items: center;
+}
+
+TextInput.field {
+  width: 100%;
+  height: 32;
+  padding: 0 8;
+  align-items: center;
+  font-size: 13;
+  color: #0f172a;
+  background: #ffffff;
+  border-width: 1;
+  border-color: #cbd5e1;
+  border-radius: 6;
+}
+
+TextInput.field:focus {
+  border-color: #2563eb;
+}
+
+/* A list of names: rows of 28, the marked one on a blue ground. */
+ScrollView.list {
+  width: 100%;
+  background: #ffffff;
+  border-width: 1;
+  border-color: #e2e8f0;
+  border-radius: 4;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+ScrollView.short {
+  height: 112;
+}
+
+ScrollView.tall {
+  height: 400;
+}
+
+ItemsControl.rows {
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  height: 28;
+  position: relative;
+}
+
+.row-highlight {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #dbeafe;
+}
+
+Button.row-button {
+  width: 100%;
+  height: 28;
+  padding: 0 8;
+  font-size: 13;
+  background: #00000000;
+  border-radius: 0;
+  text-align: start;
+  white-space: nowrap;
+}
+
+Button.row-button:hover {
+  background: #e2e8f066;
+}
+
+/* 200 tall: the title and the samples are below it. */
+.chart {
+  width: 100%;
+  height: 200;
+}
+
+/* 8 cells of 83 and 2 rows: 664 x 166, the width of the column. */
+.preview {
+  width: 100%;
+  height: 166;
+}
+
+/* 8 cells of 83 and 4 rows: 664 x 332. */
+.dataset-grid {
+  width: 100%;
+  height: 332;
+}
+
+.page-text {
+  width: 200;
+  font-size: 14;
+  color: #334155;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status {
+  position: absolute;
+  left: 16;
+  top: 616;
+  width: 1008;
+  font-size: 12;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.layer-text {
+  width: 200;
+  height: 48;
+  text-align: center;
+}
+
+.hint.note {
+  height: 44;
+}
+
+.detail-row {
+  width: 100%;
+  gap: 10;
+}
+
+.detail-col {
+  width: 93;
+  gap: 4;
+}
+
+Component.detail {
+  width: 93;
+  height: 93;
+}
+
+.thumb-col {
+  width: 64;
+  gap: 4;
+}
+
+Component.thumb {
+  width: 64;
+  height: 64;
+}
+
+.note-column {
+  width: 224;
+  gap: 6;
+}
+
+.caption {
+  width: 100%;
+  font-size: 11;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+ScrollView.filter-grid {
+  width: 100%;
+  height: 330;
+  background: #0f172a;
+  border-radius: 4;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+ItemsControl.grid-rows {
+  width: 100%;
+}
+
+.filter-row {
+  width: 100%;
+  height: 81;
+  gap: 5;
+  padding: 2 0 0 2;
+}
+
+.fcell {
+  width: 76;
+  height: 76;
+}
+
+/* 9 cells of 73 and 4 rows: 664 x 295. */
+.process-grid {
+  width: 100%;
+  height: 295;
+}
+
+/* ---- Help tab ---- */
+
+/* Title 28, hint, gaps: the list takes what is left of the 540 under the tab bar and padding. */
+ScrollView.help-nav {
+  width: 100%;
+  height: 440;
+  background: #ffffff;
+  border-width: 1;
+  border-color: #e2e8f0;
+  border-radius: 6;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+ItemsControl.help-nav-list {
+  width: 100%;
+  padding: 4;
+}
+
+Stack.help-nav-row {
+  width: 100%;
+}
+
+Label.help-nav-header {
+  width: 100%;
+  margin: 8 0 2 4;
+  font-size: 11;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+Button.help-nav-item {
+  width: 100%;
+  height: 30;
+  padding: 0 8;
+  font-size: 13;
+  text-align: start;
+  white-space: nowrap;
+  background: #00000000;
+}
+
+Button.help-nav-item:hover {
+  background: #e2e8f0;
+}
+
+Button.help-nav-active {
+  width: 100%;
+  height: 30;
+  padding: 0 8;
+  font-size: 13;
+  text-align: start;
+  white-space: nowrap;
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+ScrollView.help-content {
+  width: 724;
+  height: 536;
+  padding: 0 10 24 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+ItemsControl.h-topic {
+  width: 100%;
+}
+
+Stack.h-topic-body {
+  width: 100%;
+  gap: 10;
+}
+
+Label.h-kicker {
+  font-size: 12;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+Label.h-title {
+  width: 100%;
+  font-size: 26;
+  color: #0f172a;
+  margin: 0 0 4 0;
+}
+
+Label.h-head {
+  font-size: 12;
+  color: #64748b;
+  margin: 16 0 0 0;
+  white-space: nowrap;
+}
+
+Label.h-p {
+  width: 100%;
+  font-size: 15;
+  color: #1e293b;
+  line-height: 1.45;
+  user-select: text;
+}
+
+Stack.h-formula {
+  width: 100%;
+  padding: 14 12;
+  gap: 12;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 8;
+  border-width: 1;
+  border-color: #e2e8f0;
+}
+
+Math.h-math {
+  font-size: 24;
+  color: #0f172a;
+}
+
+Stack.h-legend {
+  width: 100%;
+  gap: 8;
+}
+
+Stack.h-legend-row {
+  width: 100%;
+  gap: 14;
+  align-items: center;
+}
+
+Stack.h-sym {
+  width: 90;
+  align-items: center;
+}
+
+Math.h-sym-math {
+  font-size: 18;
+  color: #0f172a;
+}
+
+Label.h-legend-text {
+  width: calc(100% - 104px);
+  font-size: 14;
+  color: #334155;
+  line-height: 1.4;
+  user-select: text;
+}
+
+Stack.h-note {
+  width: 100%;
+  padding: 10 14;
+  gap: 8;
+  background: #eff6ff;
+  border-radius: 8;
+  border-width: 1;
+  border-color: #bfdbfe;
+}
+
+Label.h-note-text {
+  width: 100%;
+  font-size: 14;
+  color: #1e3a8a;
+  line-height: 1.45;
+  user-select: text;
+}
+
+Math.h-note-math {
+  font-size: 20;
+  color: #0f172a;
+}
+
+Stack.h-faq {
+  width: 100%;
+  gap: 12;
+}
+
+Stack.h-qa {
+  width: 100%;
+  gap: 4;
+  padding: 0 0 0 12;
+}
+
+Label.h-q {
+  width: 100%;
+  font-size: 15;
+  color: #1d4ed8;
+  line-height: 1.4;
+  user-select: text;
+}
+
+Label.h-a {
+  width: 100%;
+  font-size: 14;
+  color: #334155;
+  line-height: 1.45;
+  user-select: text;
+}
+
+Stack.h-figure {
+  width: 100%;
+  gap: 6;
+}
+
+Component.h-diagram {
+  width: 100%;
+}
+
+Component.dg-190 { height: 190; }
+Component.dg-200 { height: 200; }
+Component.dg-210 { height: 210; }
+Component.dg-220 { height: 220; }
+Component.dg-230 { height: 230; }
+Component.dg-240 { height: 240; }
+Component.dg-250 { height: 250; }
+Component.dg-260 { height: 260; }
+Component.dg-270 { height: 270; }
+Component.dg-280 { height: 280; }
+
+Label.h-caption {
+  width: 100%;
+  font-size: 12;
+  color: #64748b;
+  line-height: 1.4;
+  user-select: text;
+}
+
+Button.h-try {
+  height: 36;
+  padding: 0 18;
+  margin: 12 0 0 0;
+  color: #ffffff;
+  background: #2563eb;
+}
+
+Button.h-try:hover {
+  background: #1d4ed8;
+}

@@ -1,0 +1,153 @@
+"""Writes the Help tab from help_content.py: the topic documents (assets/ui/help_topics/*.xml), the table of topics
+(src/help/help_topic_table.h) and the list of topics in assets/ui/app.xml. The strings of the topics are written by
+tools/gen_locale.py, which calls strings() below."""
+import os
+import re
+import secrets
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import help_content as C
+
+PROJECT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+TOPIC_DIR = os.path.join(PROJECT, "assets", "ui", "help_topics")
+
+
+def xml_attr(text):
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def strings():
+    s = {}
+    s["help.nav_title"] = C.NAV_TITLE
+    s["help.nav_sub"] = C.NAV_SUB
+    for key, value in C.SECTIONS.items():
+        s["help.section." + key] = value
+    for key, value in C.COMMON_HEADS.items():
+        s["help.h." + key] = value
+    for t in C.TOPICS:
+        base = "help." + t["id"]
+        s[base + ".title"] = t["title"]
+        s[base + ".kicker"] = t["kicker"]
+        s[base + ".try"] = t["try_"]
+        for i, block in enumerate(t["blocks"]):
+            kind = block[0]
+            if kind == "p":
+                s[f"{base}.p{i}"] = (block[1], block[2])
+            elif kind == "note":
+                s[f"{base}.note{i}"] = (block[1], block[2])
+            elif kind == "fig":
+                s[f"{base}.fig{i}"] = (block[2], block[3])
+            elif kind == "legend":
+                for j, (_, en, uk) in enumerate(block[1]):
+                    s[f"{base}.legend{i}_{j}"] = (en, uk)
+            elif kind == "faq":
+                for j, (qe, qu, ae, au) in enumerate(block[1]):
+                    s[f"{base}.q{i}_{j}"] = (qe, qu)
+                    s[f"{base}.a{i}_{j}"] = (ae, au)
+    return s
+
+
+def topic_xml(t):
+    base = "help." + t["id"]
+    out = ['<Stack class="h-topic-body" direction="vertical">']
+    out.append(f'    <Label class="h-kicker" text="{{tr {base}.kicker}}"/>')
+    out.append(f'    <Label class="h-title" text="{{tr {base}.title}}"/>')
+    for i, block in enumerate(t["blocks"]):
+        kind = block[0]
+        if kind == "head":
+            out.append(f'    <Label class="h-head" text="{{tr help.h.{block[1]}}}"/>')
+        elif kind == "p":
+            out.append(f'    <Label class="h-p" text="{{tr {base}.p{i}}}"/>')
+        elif kind == "note":
+            out.append('    <Stack class="h-note" direction="vertical">')
+            out.append(f'        <Label class="h-note-text" text="{{tr {base}.note{i}}}"/>')
+            out.append("    </Stack>")
+        elif kind == "fig":
+            out.append('    <Stack class="h-figure" direction="vertical">')
+            out.append(f'        <Component class="h-diagram dg-{block[4]}" paint="{{binding diagram{block[1] + 1}}}"/>')
+            out.append(f'        <Label class="h-caption" text="{{tr {base}.fig{i}}}"/>')
+            out.append("    </Stack>")
+        elif kind == "math":
+            out.append('    <Stack class="h-formula" direction="vertical">')
+            for tex in block[1]:
+                out.append(f'        <Math class="h-math" display="true" formula="{xml_attr(tex)}"/>')
+            out.append("    </Stack>")
+        elif kind == "legend":
+            out.append('    <Stack class="h-legend" direction="vertical">')
+            for j, (tex, _, _) in enumerate(block[1]):
+                out.append('        <Stack class="h-legend-row" direction="horizontal">')
+                out.append('            <Stack class="h-sym" direction="vertical">')
+                out.append(f'                <Math class="h-sym-math" formula="{xml_attr(tex)}"/>')
+                out.append("            </Stack>")
+                out.append(f'            <Label class="h-legend-text" text="{{tr {base}.legend{i}_{j}}}"/>')
+                out.append("        </Stack>")
+            out.append("    </Stack>")
+        elif kind == "faq":
+            out.append('    <Stack class="h-faq" direction="vertical">')
+            for j in range(len(block[1])):
+                out.append('        <Stack class="h-qa" direction="vertical">')
+                out.append(f'            <Label class="h-q" text="{{tr {base}.q{i}_{j}}}"/>')
+                out.append(f'            <Label class="h-a" text="{{tr {base}.a{i}_{j}}}"/>')
+                out.append("        </Stack>")
+            out.append("    </Stack>")
+        else:
+            raise ValueError(kind)
+    out.append(f'    <Button class="h-try" content="{{tr {base}.try}}" command="{{binding tryIt}}"/>')
+    out.append("</Stack>")
+    return "\n".join(out) + "\n"
+
+
+def table_header():
+    figures = sorted({f for t in C.TOPICS for f in t["figures"]})
+    opens = ["None"] + sorted({t["open"] for t in C.TOPICS if t["open"] != "None"})
+    lines = ["#pragma once", "", "// Generated by tools/help/gen_help.py from tools/help/help_content.py: do not edit by hand.", "",
+             '#include "help/help_figures.h"', "", "#include <array>", "#include <cstddef>", "",
+             "namespace game {", "",
+             "enum class HelpOpen { " + ", ".join(opens) + " };", "",
+             "struct HelpTopicInfo {", "    const char* section;", "    const char* title;",
+             "    std::array<FigureId, kFiguresPerTopic> figures;", "    std::size_t figure_count;", "    HelpOpen open;", "};", "",
+             f"inline constexpr std::size_t kHelpTopicCount = {len(C.TOPICS)};", "",
+             "inline constexpr std::array<HelpTopicInfo, kHelpTopicCount> kHelpTopics{{"]
+    for t in C.TOPICS:
+        figs = t["figures"] + ["None"] * (2 - len(t["figures"]))
+        figs = ", ".join("FigureId::" + f for f in figs)
+        lines.append(f'    {{"help.section.{t["section"]}", "help.{t["id"]}.title", {{{figs}}}, {len(t["figures"])}, HelpOpen::{t["open"]}}},')
+    lines += ["}};", "", "}", ""]
+    return "\n".join(lines), figures
+
+
+def screen_block():
+    lines = ["        <!-- HELP-TOPICS-BEGIN -->"]
+    for i, t in enumerate(C.TOPICS):
+        lines.append(f'            <ItemsControl class="h-topic" items_source="{{binding helpTopic{i}}}" if="{{binding helpShown{i}}}">')
+        lines.append(f'                <ItemTemplate src="help_topics/{t["id"]}.xml"/>')
+        lines.append("            </ItemsControl>")
+    lines.append("        <!-- HELP-TOPICS-END -->")
+    return "\n".join(lines)
+
+
+def write(path, text):
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
+
+
+def main():
+    os.makedirs(TOPIC_DIR, exist_ok=True)
+    for t in C.TOPICS:
+        path = os.path.join(TOPIC_DIR, t["id"] + ".xml")
+        write(path, topic_xml(t))
+        if not os.path.exists(path + ".meta"):
+            write(path + ".meta", f'guid = "{secrets.token_hex(16)}"\nimporter = "ui"\n')
+    header, _ = table_header()
+    os.makedirs(os.path.join(PROJECT, "src", "help"), exist_ok=True)
+    write(os.path.join(PROJECT, "src", "help", "help_topic_table.h"), header)
+    xml_path = os.path.join(PROJECT, "assets", "ui", "app.xml")
+    s = open(xml_path, encoding="utf-8", newline="").read().replace("\r\n", "\n")
+    s = re.sub(r"        <!-- HELP-TOPICS-BEGIN -->.*?<!-- HELP-TOPICS-END -->", lambda m: screen_block(), s, flags=re.S)
+    write(xml_path, s)
+    print(len(C.TOPICS), "topics")
+
+
+if __name__ == "__main__":
+    main()

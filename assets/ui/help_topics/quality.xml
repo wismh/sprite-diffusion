@@ -1,0 +1,22 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.quality.kicker}"/>
+    <Label class="h-title" text="{tr help.quality.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.quality.p1}"/>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.quality.q3_0}"/>
+            <Label class="h-a" text="{tr help.quality.a3_0}"/>
+        </Stack>
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.quality.q3_1}"/>
+            <Label class="h-a" text="{tr help.quality.a3_1}"/>
+        </Stack>
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.quality.q3_2}"/>
+            <Label class="h-a" text="{tr help.quality.a3_2}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.quality.try}" command="{binding tryIt}"/>
+</Stack>

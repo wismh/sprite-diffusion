@@ -1,0 +1,21 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.ema.kicker}"/>
+    <Label class="h-title" text="{tr help.ema.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.ema.p1}"/>
+    <Label class="h-head" text="{tr help.h.formulas}"/>
+    <Stack class="h-formula" direction="vertical">
+        <Math class="h-math" display="true" formula="w_{\text{avg}} \leftarrow d \; w_{\text{avg}} + (1-d)\; w"/>
+    </Stack>
+    <Label class="h-p" text="{tr help.ema.p4}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.ema.p6}"/>
+    <Label class="h-head" text="{tr help.h.faq}"/>
+    <Stack class="h-faq" direction="vertical">
+        <Stack class="h-qa" direction="vertical">
+            <Label class="h-q" text="{tr help.ema.q8_0}"/>
+            <Label class="h-a" text="{tr help.ema.a8_0}"/>
+        </Stack>
+    </Stack>
+    <Button class="h-try" content="{tr help.ema.try}" command="{binding tryIt}"/>
+</Stack>

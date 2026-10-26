@@ -1,0 +1,14 @@
+<Stack class="h-topic-body" direction="vertical">
+    <Label class="h-kicker" text="{tr help.process.kicker}"/>
+    <Label class="h-title" text="{tr help.process.title}"/>
+    <Label class="h-head" text="{tr help.h.idea}"/>
+    <Label class="h-p" text="{tr help.process.p1}"/>
+    <Label class="h-head" text="{tr help.h.where}"/>
+    <Label class="h-p" text="{tr help.process.p3}"/>
+    <Label class="h-p" text="{tr help.process.p4}"/>
+    <Label class="h-p" text="{tr help.process.p5}"/>
+    <Stack class="h-note" direction="vertical">
+        <Label class="h-note-text" text="{tr help.process.note6}"/>
+    </Stack>
+    <Button class="h-try" content="{tr help.process.try}" command="{binding tryIt}"/>
+</Stack>
